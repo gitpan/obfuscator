@@ -1,0 +1,72 @@
+<HTML><BODY BGCOLOR="#c8c8c8" TEXT="#000000"><H1>CVS log</H1><HR><H2><A NAME="1"><A HREF="#2">obfuscator.pl</A></A></H2><UL><LI><A HREF="#3">revision 1.14</A></LI><LI><A HREF="#4">revision 1.13</A></LI><LI><A HREF="#5">revision 1.12</A></LI><LI><A HREF="#6">revision 1.11</A></LI><LI><A HREF="#7">revision 1.10</A></LI><LI><A HREF="#8">revision 1.9</A></LI><LI><A HREF="#9">revision 1.8</A></LI><LI><A HREF="#10">revision 1.7</A></LI><LI><A HREF="#11">revision 1.6</A></LI><LI><A HREF="#12">revision 1.5</A></LI><LI><A HREF="#13">revision 1.4</A></LI><LI><A HREF="#14">revision 1.3</A></LI><LI><A HREF="#15">revision 1.2</A></LI><LI><A HREF="#16">revision 1.1</A></LI><LI><A HREF="#17">revision 1.1.1.1</A></LI>
+<HR><H2><STRONG><A NAME="2">obfuscator.pl</A></STRONG></H2><P><PRE>Working file: obfuscator.pl
+head: 1.14
+branch:
+locks: strict
+access list:
+symbolic names:
+	start: 1.1.1.1
+	gosha: 1.1.1
+keyword substitution: kv
+total revisions: 15;	selected revisions: 15
+description:
+</PRE></P><HR><H2><STRONG><A NAME="3">obfuscator.pl [ revision 1.14 ]</A></STRONG></H2><BR><STRONG>date: 2007-04-23 22:43:40 +0400;  author: gosha;  state: Exp;  lines: +18 -13;  commitid: 381b462cfde14567;</STRONG><P><PRE>Заменил параметр wo_fn на use_fn
+
+Добавил параметр use_hdr - использовать для `шифрования` заголовок скрипта
+
+Скрипт не корректно работал если внутри встречались package's
+	( тоесть смещение в __DATA__ было н то что ожидалось... )
+</PRE></P><HR><H2><STRONG><A NAME="4">obfuscator.pl [ revision 1.13 ]</A></STRONG></H2><BR><STRONG>date: 2006-08-07 11:43:46 +0400;  author: gosha;  state: Exp;  lines: +49 -7;  commitid: 4ec144d6ef124567;</STRONG><P><PRE>Добавил POD документацию
+
+Поменял значение по умолчанию full_hdr на true
+</PRE></P><HR><H2><STRONG><A NAME="5">obfuscator.pl [ revision 1.12 ]</A></STRONG></H2><BR><STRONG>date: 2006-07-18 18:09:30 +0400;  author: gosha;  state: Exp;  lines: +16 -5;  commitid: 295d44bceb5b4567;</STRONG><P><PRE>Добавил опцию full_hdr - не искать  взаголовке cvs id, использовать заголовок
+	полностью.
+</PRE></P><HR><H2><STRONG><A NAME="6">obfuscator.pl [ revision 1.11 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-30 12:30:07 +0400;  author: gosha;  state: Exp;  lines: +2 -2;</STRONG><P><PRE>При наличии в исходном скрипте тега DATA было несколько не корректное
+	отображение этих самых данных...
+</PRE></P><HR><H2><STRONG><A NAME="7">obfuscator.pl [ revision 1.10 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-26 16:46:22 +0400;  author: gosha;  state: Exp;  lines: +49 -27;</STRONG><P><PRE>Обрабатываем переменные из our
+
+новый параметр wo_fn - криптавать строку без использования имени файла
+	( для модулей .pm )
+
+Обфускируются занчения вида ${scalar} %{hash}...
+</PRE></P><HR><H2><STRONG><A NAME="8">obfuscator.pl [ revision 1.9 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-22 17:24:18 +0400;  author: gosha;  state: Exp;  lines: +29 -26;</STRONG><P><PRE>Добавил поддержку конструкции 'use vars qw();'
+</PRE></P><HR><H2><STRONG><A NAME="9">obfuscator.pl [ revision 1.8 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-21 13:27:31 +0400;  author: gosha;  state: Exp;  lines: +81 -23;  commitid: 2d7d447032124567;</STRONG><P><PRE>Криптование теперь идет несколько по другому:
+	строка составляется через символ имяфайла\заголовок
+
+Параметр командной строки skip сейчас vskip
+
+Добавил новый параметр sskip - пропускать имена процедур
+
+enc теперь работает ДО обфускации
+</PRE></P><HR><H2><STRONG><A NAME="10">obfuscator.pl [ revision 1.7 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-20 23:46:45 +0400;  author: gosha;  state: Exp;  lines: +11 -4;  commitid: 4eef446f71fc4567;</STRONG><P><PRE>При обфускации имен хеша добавил поддержку конструкции:
+	@hash{ @slice }
+</PRE></P><HR><H2><STRONG><A NAME="11">obfuscator.pl [ revision 1.6 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-20 22:30:52 +0400;  author: gosha;  state: Exp;  lines: +16 -6;  commitid: 4674446f60334567;</STRONG><P><PRE>__DATA__ добавляется только при enc == 1
+
+Некоторая лажа в style_ob
+</PRE></P><HR><H2><STRONG><A NAME="12">obfuscator.pl [ revision 1.5 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-20 22:07:48 +0400;  author: gosha;  state: Exp;  lines: +471 -218;  commitid: 41dd446f5a294567;</STRONG><P><PRE>Добавил поддержку параметров командной строки
+
+Поправил ошибку обфускации массивов ( не обрабатывалось $#array )
+
+Из командной сроки настраивается:
+	обфускация имен переменных
+	обфускация имен процедур
+	обфускация стиля ( удаление пробелов )
+	кодирование текста
+	задания времени работы в триале
+	задание имен переменных которые не лбрабатывать
+
+Перелопатил все внутренности ( без особого изменения функционала )
+</PRE></P><HR><H2><STRONG><A NAME="13">obfuscator.pl [ revision 1.4 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-20 17:26:57 +0400;  author: gosha;  state: Exp;  lines: +15 -12;  commitid: 1dc5446f18fc4567;</STRONG><P><PRE>вернул взад кусок кода касающийся кодирования - в принципе не корректный
+	алгоритм...
+</PRE></P><HR><H2><STRONG><A NAME="14">obfuscator.pl [ revision 1.3 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-20 17:02:24 +0400;  author: gosha;  state: Exp;  lines: +87 -40;  commitid: 19b2446f13174567;</STRONG><P><PRE>Понимаем теги __DATA__ и __END__ в исходном скрипте
+
+Понимаем ПОД документацию
+
+Несколько поменял алгоритм `кодирования'
+</PRE></P><HR><H2><STRONG><A NAME="15">obfuscator.pl [ revision 1.2 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-19 23:46:52 +0400;  author: gosha;  state: Exp;  lines: +4 -5;  commitid: 2b59446e20994567;</STRONG><P><PRE>больше не ругаемся на незаквоченные кавычки
+</PRE></P><HR><H2><STRONG><A NAME="16">obfuscator.pl [ revision 1.1 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-19 23:36:20 +0400;  author: gosha;  state: Exp;  commitid: 29ff446e1e154567;</STRONG><P><PRE>branches:  1.1.1;
+Initial revision
+</PRE></P><HR><H2><STRONG><A NAME="17">obfuscator.pl [ revision 1.1.1.1 ]</A></STRONG></H2><BR><STRONG>date: 2006-05-19 23:36:20 +0400;  author: gosha;  state: Exp;  lines: +0 -0;  commitid: 29ff446e1e154567;</STRONG><P><PRE>Обфускатор перловых скриптов
+	сделан под себя ( соглашения в начале скрипта )
+=============================================================================
+</PRE></P></UL></BODY></HTML>

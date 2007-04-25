@@ -1,0 +1,12 @@
+examples/d2ms.pl
+examples/ob/d2ms.pl
+examples/ob/hello.pl
+examples/ob/obfuscator.pl
+examples/hello.pl
+Install
+obfuscator.pl
+Contrib/CHANGELOG.html
+Readme.txt
+MANIFEST
+Makefile.PL
+META.yml                                 Module meta-data (added by MakeMaker)
